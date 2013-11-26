@@ -9,12 +9,12 @@ void setup(){
 }
   void draw(){
   background(0,50,100);
+  catcher.display();
+  catcher.update();
   for (int i = 0; i < drops.length; i++) {
     drops[i].display();
     drops[i].fall();
     drops[i].restart();
     }
-    catcher.display();
-    catcher.update();
    }
   
