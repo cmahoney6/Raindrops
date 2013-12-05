@@ -1,13 +1,14 @@
 class Catcher{
+  PImage man;
   PVector loc;
   int d;
   Catcher(){
     loc=new PVector(mouseX,height-d);
-    d=30;
+    d=100;
+    man=loadImage("man.png");
   }
   void display(){
-    fill(0);
-    ellipse(loc.x,loc.y,d,d);
+    image(man,loc.x,loc.y,d,d);
   }
   void update(){
     loc.set(mouseX,height-d);
