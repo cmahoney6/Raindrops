@@ -2,14 +2,22 @@ class Catcher{
   PVector loc;
   int d;
   Catcher(){
+    loc=new PVector(mouseX,height-d);
     d=30;
   }
   void display(){
-    ellipse(mouseX,height-150,d,d);
+    fill(0);
+    ellipse(loc.x,loc.y,d,d);
   }
-  void catchDrop(){
-    if(loc.dist(fall.loc < d/2 + fall.d/2)){
-      fall.colorChange();
-      fall.restart();
+  void update(){
+    loc.set(mouseX,height-d);
+  }
+  boolean catchDrop(Raindrops drops){
+    if(loc.dist(drops.loc) < d/2 + drops.d/2){
+      return true;
     }
+    else{
+      return false;
+    }
+  }
 }
