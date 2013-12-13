@@ -1,10 +1,8 @@
 Raindrops[] drops=new Raindrops[300];
 Catcher catcher;
 int oldTime = 0;
-int currentTime = 0;
-int timeChange = 0;
 int index = 1;
-int threshold = 3000;
+int threshold = 1000;
 int score;
 int lives;
 int rx, ry, rw, rh;
@@ -64,13 +62,10 @@ void draw() {
         gameover=true;
       }
     }
-    //game begins and each set falls after 3 seconds
-    currentTime= millis();
-    timeChange = currentTime - oldTime;
-    if (timeChange > threshold) {
-      fill(random(255), random(255), random(255), 100);
-      oldTime = currentTime;
+    //game begins and each set falls after 1 second
+    if (millis() - oldTime >threshold) {
       index++;
+      oldTime = millis();
     }
     //sets parameters for what occurs when the game ends
     if (gameover==true) {
