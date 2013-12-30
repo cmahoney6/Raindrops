@@ -12,7 +12,6 @@ int lx, ly, lw, lh;
 boolean gameover;
 boolean start;
 boolean levelup;
-boolean levelstart;
 PImage scene;
 PImage scene2;
 void setup() {
@@ -39,7 +38,6 @@ void setup() {
   lives=3;
   start=false;
   levelup=false;
-  levelstart=false;
 }
 void draw() {
   //start screen 
@@ -93,21 +91,15 @@ void draw() {
       text("YOU'RE A FAILURE", width/2, height/2);
     }
   }
-  if (score>=3) {
+  if (score>=2) {
     levelup=true;
   }
-  if (levelup==true) {
-    background(0);
-    fill(0, 255, 0);
-    text("LEVEL UP, press to begin", 60, 100);
-    rectMode(CENTER);
-    fill(0, 255, 0);
-    rect(lx, ly, lw, lh);
-  }
+  
   //starts second level
-  if (levelup==true && levelstart==true) {
+  if (levelup==true) {
     size(scene2.width, scene2.height);
     background(scene2);
+     text("LEVEL UP", 60, 100);
     //text displays the score (number of drops caught)
     textSize(50);
     fill(10);
@@ -157,8 +149,5 @@ void mousePressed() {
   if (mouseX>rx && mouseX<rx+rw && mouseY>ry && mouseY<ry+rh && start==false) {
     start=!start;
   }
-  if (mouseX>lx && mouseX<lx+lw && mouseY>ly && mouseY<ly+lh) {
-    levelstart=!levelstart;
-  }
+  
 }
-
